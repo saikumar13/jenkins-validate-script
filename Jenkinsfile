@@ -17,13 +17,12 @@ pipeline {
 
                     // Write the build results to a file
                     def outputFile = new File('build_results.txt')
-                    outputFile.text = ''
 
                     jobs.each { job ->
                         def build = buildNumbers[job]
                         def result = build.getResult()
-                        def outputLine = "${job}: Build #${build} - ${result}"
-                        outputFile << outputLine + '\n'
+                        def outputLine = "${job}: Build #${build} - ${result}\n"
+                        outputFile.append(outputLine)
                         echo outputLine
                     }
                 }
