@@ -12,6 +12,7 @@ pipeline {
                     def buildNumbers = [:]
                     jobs.each { job ->
                         def build = build job: job, wait: true
+                        println "Hello ====> ${build}"
                         buildNumbers[job] = build.number
                     }
 
